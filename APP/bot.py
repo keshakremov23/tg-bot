@@ -4,10 +4,10 @@ from aiogram.filters import Command
 from aiogram.types import Message
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.client.session.aiohttp import AiohttpSession
+from keyboards.main_kb import zxc
+TOKEN = ""
 
-TOKEN = "#####"
-
-PROXY_URL = "######"
+PROXY_URL = ""
 
 async def main():
     session = AiohttpSession(proxy=PROXY_URL)
@@ -16,6 +16,12 @@ async def main():
     @dp.message(F.text == 'ку')
     async def cmd_start(message: Message):
         await message.answer('ку')
+        await message.answer(
+            text="Вот клавиатура:",
+            reply_markup=zxc()
+        )
+
+
 
     print("Бот запущен")
     await dp.start_polling(bot)
