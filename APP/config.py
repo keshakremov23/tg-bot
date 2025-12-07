@@ -1,24 +1,23 @@
-# config.py
-import os 
+# config.py - простой вариант
+import os
 from urllib.parse import urlparse
-from dotaenv import load_dotaenv
 
-load_dotaenv()
-
-TOKEN = os.getenv("BOT_TOKEN")
-PROXY_TOKEN = os.getenv("PROXY_URL")
-
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://admin:admin@127.0.0.1:5432/tg-bot")
+# Прямые значения
+TOKEN = "8478765106:AAEjPiQJpgXJ_er-5_U0U-HS6xVGwIbvrxU"
+PROXY_URL = "http://P89FcB:T6ot1M@170.246.55.245:9603"
+DATABASE_URL = "postgresql://admin:admin@localhost:5432/tg-bot"
 
 def parse_db_url(db_url):
     parsed = urlparse(db_url)
-    
     return {
-        'dbname': parsed.path[1:],
-        'user': parsed.username,
-        'password': parsed.password,
-        'host': parsed.hostname,
-        'port': parsed.port
+        'dbname': parsed.path[1:] if parsed.path else 'tg-bot',
+        'user': parsed.username or 'admin',
+        'password': parsed.password or 'admin',
+        'host': parsed.hostname or 'localhost',
+        'port': parsed.port or 5432
     }
 
 DB_CONFIG = parse_db_url(DATABASE_URL)
+
+# Для совместимости с admin_panel.py
+ADMIN_ID = 1035088857
