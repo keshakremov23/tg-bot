@@ -5,6 +5,10 @@ from aiogram.types import Message
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.client.session.aiohttp import AiohttpSession
 
+TOKEN = "#####"
+
+PROXY_URL = "######"
+
 async def main():
     session = AiohttpSession(proxy=PROXY_URL)
     bot = Bot(token=TOKEN, session=session)
