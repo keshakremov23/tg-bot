@@ -1,3 +1,0 @@
-TOKEN=""
-PROXY_URL=""
-
